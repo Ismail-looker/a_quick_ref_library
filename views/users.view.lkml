@@ -66,15 +66,20 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-
   dimension: last_name {
     type: string
     sql: ${TABLE}.last_name ;;
   }
 
   dimension: full_name {
+    description: "Concantenate First and last name"
     type: string
     sql: ${first_name} || ' ' || ${last_name} ;;
+  }
+
+  dimension: first_letter {     # Create a dimension called "first_letter"
+    description: "Perform a SQL calculation based on the `full_name` dimension"
+    sql: SUBSTR(${full_name},1,1) ;; # Perform a SQL calculation based on the "full_name" dimension
   }
 
   dimension: gender {
@@ -95,6 +100,44 @@ view: users {
   dimension: state {
     type: string
     sql: ${TABLE}.state ;;
+  }
+
+  dimension: region {  # Create a dimension called "region"
+    case: {            # Define a set of cases and the corresponding labels for those cases
+
+      # When the "state" dimension has a western state, label it "West"
+      when: {
+        sql: ${state} in ('WA','OR','CA','NV','UT','WY','ID','MT','CO','AK','HI') ;;
+        label: "West"
+      }
+
+      # When the "state" dimension has a southwestern state, label it "Southwest"
+      when: {
+        sql: ${state} in ('AZ','NM','TX','OK') ;;
+        label: "Southwest"
+      }
+
+      # When the "state" dimension has a midwestern state, label it "Midwest"
+      when: {
+        sql: ${state} in ('ND','SD','MN','IA','WI','MN','OH','IN','MO','NE','KS','MI','IL') ;;
+        label: "Midwest"
+      }
+
+      # When the "state" dimension has a northeastern state, label it "Northeast"
+      when: {
+        sql: ${state} in ('MD','DE','NJ','CT','RI','MA','NH','PA','NY','VT','ME','DC') ;;
+        label: "Northeast"
+      }
+
+      # When the "state" dimension has a southeastern state, label it "Southeast"
+      when: {
+        sql: ${state} in ('AR','LA','MS','AL','GA','FL','SC','NC','VA','TN','KY','WV') ;;
+        label: "Southeast"
+      }
+
+      # If none of the above conditions are satisfied, label it "Unknown"
+      else: "Unknown"
+    }
   }
 
   dimension: zip {

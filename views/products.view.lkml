@@ -8,6 +8,12 @@ view: products {
     sql: ${TABLE}.id ;;
   }
 
+
+# Description: Simple use of liquid value variable in link parameter
+# Feature(s): Using `{{ value }}` from HTML liquid variables
+# Ref link: https://docs.looker.com/reference/liquid-variables#:~:text=Field%20Values-,value,-The%20raw%20value
+# Created by: Ismail A. Sept 2021
+# Updates by: Ismail A. Sept 2021, ...
   dimension: brand {
     type: string
     sql: ${TABLE}.brand ;;
@@ -21,6 +27,7 @@ view: products {
   dimension: category {
     type: string
     sql: ${TABLE}.category ;;
+    html: <a target="_blank" href="https://www.google.com/">Link to Google</a>;;
   }
 
   dimension: department {
@@ -31,6 +38,17 @@ view: products {
   dimension: item_name {
     type: string
     sql: ${TABLE}.item_name ;;
+  }
+
+# Wrap Column header but truncate row entries in a table
+# Feature(s): Using Liquid Filter `truncate`
+# Ref link: https://shopify.github.io/liquid/filters/truncate/
+# Created by: Ismail A. Sept 2021
+# Updates by: Ismail A. Sept 2021, ...
+  dimension: item_name_truncated {
+    type: string
+    sql: ${TABLE}.item_name ;;
+    html: {{value | truncate: 20}} ;;
   }
 
   dimension: rank {
