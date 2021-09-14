@@ -62,12 +62,12 @@ view: orders {
     type: string
     sql: ${TABLE}.status ;;
     html:
-      {% if value == 'Complete' %}
-        <div style="background-color:#D5EFEE">{{ value }}</div>
-      {% elsif value == 'Processing' or value == 'Shipped' %}
-        <div style="background-color:#FCECCC">{{ value }}</div>
-      {% elsif value == 'Cancelled' or value == 'Returned' %}
-        <div style="background-color:#EFD5D6">{{ value }}</div>
+      {% if value == 'complete' %}
+        <div style="background-color:#D5EFEE">{{ value |capitalize }}</div>
+      {% elsif value == 'processing' or value == 'shipped' or value == 'pending' %}
+        <div style="background-color:#FCECCC">{{ value | capitalize }}</div>
+      {% elsif value == 'cancelled' or value == 'returned' %}
+        <div style="background-color:#EFD5D6">{{ value |capitalize }}</div>
       {% endif %}
     ;;
   }
