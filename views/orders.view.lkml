@@ -17,6 +17,7 @@ view: orders {
       week,
       month,
       quarter,
+      week_of_year,
       year
     ]
     sql: DATE_ADD(${TABLE}.created_at, INTERVAL 3 YEAR) ;;
@@ -57,6 +58,12 @@ view: orders {
     html: {{ rendered_value | date: "%d-%B-%y" }};;
   }
 
+  dimension: date_formatted_week_year{
+    group_label: "Created"
+    label: "Date_week_year"
+    sql: ${created_week_of_year} ;;
+    html: {{ rendered_value }}.{{created_year._value}};; #main part
+  }
 
   dimension: status {
     type: string
