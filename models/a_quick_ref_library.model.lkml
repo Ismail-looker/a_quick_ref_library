@@ -81,3 +81,9 @@ explore: events {
 }
 
 explore: flights {}
+
+explore: derived_table_annavi_test {
+  always_filter: {
+    filters: [derived_table_annavi_test.status_parameter: "^%^%"]
+  }
+}

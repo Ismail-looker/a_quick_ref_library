@@ -74,7 +74,12 @@ view: users {
   dimension: full_name {
     description: "Concantenate First and last name"
     type: string
-    sql: ${first_name} || ' ' || ${last_name} ;;
+    sql: concat( ${TABLE}.first_name," ", ${TABLE}.last_name) ;;
+    # link: {
+    #   label: "{{full_name._value}}"
+    #   url: "/explore/a_quick_ref_library/order_items?fields=users.full_name,users.email,users.age,users.state,users.city,order_items.total_sale_price,orders.count&f[users.full_name]={{ value }}&origin=drill-menu"
+    # }
+   html: <a href="/explore/a_quick_ref_library/order_items?fields=users.full_name,users.email,users.age,users.state,users.city,order_items.total_sale_price,orders.count&f[users.full_name]={{ value }}"> {{value}}</a> ;;
   }
 
   dimension: first_letter {     # Create a dimension called "first_letter"
