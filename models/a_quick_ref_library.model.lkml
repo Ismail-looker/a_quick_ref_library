@@ -8,15 +8,7 @@ datagroup: a_quick_ref_library_default_datagroup {
   max_cache_age: "1 hour"
 }
 
-datagroup: user_attribute_test {
-sql_trigger: select max(id) from demo_db.order_items;;
-  max_cache_age: "1 hour"
-}
 
-datagroup: user_attribute {
-sql_trigger: select max(id) from demo_db.{{ _user_attributes['table_name'] }} ;;
-  max_cache_age: "1 hour"
-}
 
 persist_with: a_quick_ref_library_default_datagroup
 
