@@ -13,6 +13,11 @@ datagroup: user_attribute_test {
   max_cache_age: "1 hour"
 }
 
+datagroup: user_attribute {
+  sql_trigger: select max(id) from {{ _user_attributes['table_name'] }} ;;
+  max_cache_age: "1 hour"
+}
+
 persist_with: a_quick_ref_library_default_datagroup
 
 explore: order_items {
