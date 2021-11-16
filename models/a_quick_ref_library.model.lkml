@@ -14,7 +14,7 @@ sql_trigger: select max(id) from demo_db.order_items;;
 }
 
 datagroup: user_attribute {
-  sql_trigger: select max(id) from {{ _user_attributes['table_name'] }} ;;
+sql_trigger: select max(id) from  _user_attributes['table_name']  ;;
   max_cache_age: "1 hour"
 }
 
