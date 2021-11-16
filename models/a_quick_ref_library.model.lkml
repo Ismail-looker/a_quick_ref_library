@@ -9,7 +9,7 @@ datagroup: a_quick_ref_library_default_datagroup {
 }
 
 datagroup: user_attribute_test {
-  sql_trigger: select max(id) from demo_db.events ;;
+sql_trigger: select max(id) from demo_db.order_items;;
   max_cache_age: "1 hour"
 }
 
