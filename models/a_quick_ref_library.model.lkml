@@ -42,7 +42,14 @@ explore: order_items {
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
     relationship: many_to_one
   }
+
+join: ndt_bind_filter_test {
+  type: left_outer
+  relationship: one_to_one
+  sql_on: ${ndt_bind_filter_test.status} = ${orders.status} ;;
 }
+}
+
 
 explore: orders {
   join: users {
@@ -88,4 +95,4 @@ explore: derived_table_annavi_test {
   always_filter: {
     filters: [derived_table_annavi_test.status_parameter: "^%^%"]
   }
-}
+  }
