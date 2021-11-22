@@ -28,7 +28,7 @@ view: ndt_bind_filter_test {
       type: date
     }
     dimension: status {}
-    dimension: count {
+    measure: count {
       type: number
     }
   dimension: id {

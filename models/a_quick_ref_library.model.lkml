@@ -98,11 +98,24 @@ explore: derived_table_annavi_test {
   }
 
 explore: ndt_bind_filter_test {
-  fields: [- order_items.category_count]
+  view_name: ndt_bind_filter_test
+  fields: [ALL_FIELDS*,- order_items.category_count]
   join: order_items {
-    type: left_outer
-    relationship: one_to_one
-sql: ${order_items.id} = ${ndt_bind_filter_test.order_id} ;;
-  }
+    type: cross
+    relationship: many_to_one
+sql_on:${ndt_bind_filter_test.order_id} =  ${order_items.id}  ;;
+}
+
+join: ndt_bind_filter_text_second {
+  type: inner
+  relationship:one_to_one
+  sql_on: ${ndt_bind_filter_test.status} = ${ndt_bind_filter_text_second.status};;
+}
+
+# join: orders {
+#   type: left_outer
+#   relationship: one_to_one
+#   sql_on: ${ndt_bind_filter_test.status} = ${orders.status} ;;
+# }
 
 }
