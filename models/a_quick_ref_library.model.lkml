@@ -96,3 +96,13 @@ explore: derived_table_annavi_test {
     filters: [derived_table_annavi_test.status_parameter: "^%^%"]
   }
   }
+
+explore: ndt_bind_filter_test {
+  fields: [- order_items.category_count]
+  join: order_items {
+    type: left_outer
+    relationship: one_to_one
+sql: ${order_items.id} = ${ndt_bind_filter_test.order_id} ;;
+  }
+
+}

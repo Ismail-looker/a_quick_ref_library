@@ -1,5 +1,7 @@
 # If necessary, uncomment the line below to include explore_source.
 include: "/models/a_quick_ref_library.model.lkml"
+include: "/views/order_items.view.lkml"
+include: "/views/orders.view.lkml"
 
 view: ndt_bind_filter_test {
     derived_table: {
@@ -7,6 +9,8 @@ view: ndt_bind_filter_test {
         column: created_date { field: orders.created_date }
         column: status { field: orders.status }
         column: count { field: orders.count }
+        column: id { field: orders.id }
+        column: order_id {}
         # column: returned_date {
         #   field: order_items.returned_date
         #   }
@@ -27,6 +31,12 @@ view: ndt_bind_filter_test {
     dimension: count {
       type: number
     }
+  dimension: id {
+    type: number
+  }
+  dimension: order_id {
+    type: number
+  }
     # dimension: returned_date {
     #   type: date
     # }
