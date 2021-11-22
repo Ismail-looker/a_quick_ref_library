@@ -5,6 +5,7 @@ include: "/views/orders.view.lkml"
 
 view: ndt_bind_filter_test {
     derived_table: {
+     #  sql_trigger_value: SELECT CURDATE() ;;
       explore_source: order_items {
         column: created_date { field: orders.created_date }
         column: status { field: orders.status }
