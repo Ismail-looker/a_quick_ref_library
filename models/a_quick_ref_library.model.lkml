@@ -121,5 +121,6 @@ join: ndt_bind_filter_text_second {
 #   relationship: one_to_one
 #   sql_on: ${ndt_bind_filter_test.status} = ${orders.status} ;;
 # }
-
 }
+
+explore: sql_derived_table{}
