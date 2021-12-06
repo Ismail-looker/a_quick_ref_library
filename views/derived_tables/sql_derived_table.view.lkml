@@ -1,5 +1,7 @@
 view: sql_derived_table {
   derived_table: {
+   sql_trigger_value: SELECT CURRENT_DATE ;;
+  indexes: ["orders_id"]
     sql: SELECT
           `orders`.`id` AS `orders.id`,
           `orders`.`status` AS `orders.status`,
