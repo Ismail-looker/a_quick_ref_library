@@ -99,7 +99,11 @@ explore: derived_table_annavi_test {
 
 explore: ndt_bind_filter_test {
   view_name: ndt_bind_filter_test
-  fields: [ALL_FIELDS*,- order_items.category_count]
+  fields: [ALL_FIELDS*,- order_items.category_count, - order_items.days_date_diff
+    , -order_items.months_date_diff
+    , - order_items.quarters_date_diff
+    , - order_items.weeks_date_diff
+    , - order_items.years_date_diff]
   join: order_items {
     type: cross
     relationship: many_to_one

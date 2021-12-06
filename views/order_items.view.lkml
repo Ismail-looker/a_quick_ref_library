@@ -34,6 +34,13 @@ view: order_items {
     sql: ${TABLE}.returned_at ;;
   }
 
+dimension_group: date_diff {
+  type: duration
+  sql_start: ${orders.created_raw} ;;  # often this is a single database column
+  sql_end: ${returned_raw} ;;  # often this is a single database column
+  intervals: [day,month,quarter,week,year]
+}
+
   dimension: sale_price {
     type: number
     sql: ${TABLE}.sale_price ;;
