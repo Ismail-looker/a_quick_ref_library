@@ -1,6 +1,5 @@
 view: sql_derived_table {
   derived_table: {
-  # sql_trigger_value: SELECT CURRENT_DATE ;;
     sql: SELECT
           `orders`.`id` AS `orders.id`,
           `orders`.`status` AS `orders.status`,
@@ -20,6 +19,8 @@ view: sql_derived_table {
           COUNT(DISTINCT orders.id ) DESC
       LIMIT 500
        ;;
+    sql_trigger_value: SELECT CURRENT_DATE ;;
+    indexes: ["orders.id"]
   }
 
   measure: count {
@@ -49,7 +50,7 @@ view: sql_derived_table {
 
 measure: average_sales_price {
   type: number
-  sql: average(${TABLE}.`order_items.sale_price` )  ;;
+  sql: AVG(${TABLE}.`order_items.sale_price` )  ;;
 }
 
   measure: order_items_total_sale_price {
