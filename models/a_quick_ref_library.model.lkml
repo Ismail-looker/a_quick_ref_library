@@ -9,7 +9,7 @@ datagroup: a_quick_ref_library_default_datagroup {
 }
 
 datagroup: lookml_training {
-  sql_trigger: SELECT DATE_PART('hour', GETDATE()) ;;
+  sql_trigger:  SELECT HOUR(CURTIME()) ;;
   max_cache_age: "1 hour"
 }
 
