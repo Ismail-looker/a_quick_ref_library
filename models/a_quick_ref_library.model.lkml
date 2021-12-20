@@ -8,6 +8,10 @@ datagroup: a_quick_ref_library_default_datagroup {
   max_cache_age: "1 hour"
 }
 
+datagroup: lookml_training {
+  sql_trigger: SELECT DATE_PART('hour', GETDATE()) ;;
+  max_cache_age: "1 hour"
+}
 
 
 persist_with: a_quick_ref_library_default_datagroup

@@ -19,7 +19,7 @@ view: sql_derived_table {
           COUNT(DISTINCT orders.id ) DESC
       LIMIT 500
        ;;
-    sql_trigger_value: SELECT CURRENT_DATE ;;
+    sql_trigger_value: SELECT DATE_PART('hour', GETDATE()) ;;
     indexes: ["orders.id"]
   }
 
