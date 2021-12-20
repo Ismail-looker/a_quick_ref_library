@@ -20,7 +20,7 @@ view: sql_derived_table {
       LIMIT 500
        ;;
 datagroup_trigger: lookml_training
-indexes: ["orders.id"]
+indexes: ["orders_id"]
   }
 
 
