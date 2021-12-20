@@ -20,8 +20,10 @@ view: sql_derived_table {
       LIMIT 500
        ;;
 datagroup_trigger: lookml_training
-indexes: ["orders_id"]
+indexes: ["orders.id"]
   }
+
+
 
   measure: count {
     type: count
