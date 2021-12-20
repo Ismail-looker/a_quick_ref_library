@@ -19,8 +19,8 @@ view: sql_derived_table {
           COUNT(DISTINCT orders.id ) DESC
       LIMIT 500
        ;;
-    sql_trigger_value: SELECT DATE_PART('hour', GETDATE()) ;;
-    indexes: ["orders.id"]
+datagroup_trigger: lookml_training
+indexes: ["orders_id"]
   }
 
   measure: count {
